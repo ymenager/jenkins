@@ -471,11 +471,8 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
             throw new IllegalStateException("cannot change build result while in " + state);
         }
 
-        // result can only get worse
-        if (result==null || r.isWorseThan(result)) {
-            result = r;
-            LOGGER.log(FINE, this + " in " + getRootDir() + ": result is set to " + r, LOGGER.isLoggable(Level.FINER) ? new Exception() : null);
-        }
+        result = r;
+        LOGGER.log(FINE, this + " in " + getRootDir() + ": result is set to " + r, LOGGER.isLoggable(Level.FINER) ? new Exception() : null);
     }
 
     /**
